@@ -1,0 +1,60 @@
+-- Script de correction simple pour l'ambiguïté entre les fonctions get_ratings_with_profiles
+-- Cette approche supprime complètement la fonction avec paramètre UUID et 
+-- met à jour le code client pour éviter d'utiliser un UUID
+
+-- 1. Suppression directe de la fonction problématique
+DROP FUNCTION IF EXISTS get_ratings_with_profiles(uuid);
+
+-- 2. On conserve uniquement la version avec le paramètre BIGINT
+-- La fonction originale reste inchangée :
+-- 
+-- CREATE OR REPLACE FUNCTION get_ratings_with_profiles(razor_id_param BIGINT)
+-- RETURNS TABLE (
+--     id UUID,
+--     user_id UUID,
+--     razor_id BIGINT,
+--     gentleness_rating INTEGER,
+--     comment TEXT,
+--     created_at TIMESTAMP WITH TIME ZONE,
+--     username TEXT,
+--     full_name TEXT,
+--     avatar_url TEXT
+-- ) AS $$
+-- BEGIN
+--     RETURN QUERY
+--     SELECT 
+--         r.id,
+--         r.user_id,
+--         r.razor_id,
+--         r.gentleness_rating,
+--         r.comment,
+--         r.created_at,
+--         p.username,
+--         p.full_name,
+--         p.avatar_url
+--     FROM 
+--         user_ratings r
+--     LEFT JOIN 
+--         profiles p ON r.user_id = p.id
+--     WHERE 
+--         r.razor_id = razor_id_param;
+-- END;
+-- $$ LANGUAGE plpgsql
+-- SECURITY DEFINER;
+
+-- NOTE POUR LE DÉVELOPPEUR : 
+-- Cette solution simple supprime juste la version UUID de la fonction.
+-- Si cette solution ne fonctionne pas, essayez les scripts 07.1 ou 07.2.
+--
+-- Pour une solution complète, il faudrait aussi mettre à jour le code client
+-- pour s'assurer que tous les appels passent un paramètre BIGINT et non un UUID.
+-- Dans le fichier client/pages/razors/[id].tsx, assurez-vous de convertir l'ID 
+-- en nombre avant d'appeler la fonction :
+--
+-- // Exemple de correction dans le code client (TypeScript)
+-- // Au lieu de :
+-- // supabaseClient.rpc('get_ratings_with_profiles', { razor_id_param: id })
+-- 
+-- // Utiliser :
+-- const numericId = parseInt(id as string, 10);
+-- supabaseClient.rpc('get_ratings_with_profiles', { razor_id_param: numericId })

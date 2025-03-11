@@ -1,0 +1,8 @@
+{
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "https://iiflwzoslnekvkbciyht.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlpZmx3em9zbG5la3ZrYmNpeWh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA2NDQ3NzAsImV4cCI6MjA1NjIyMDc3MH0.LAQXtRwrRXI0J4QU41osqVhoyRh0jPSoko208uDupIA",
+    "NEXT_PUBLIC_TINYMCE_API_KEY": "nyy2sbtsis60l8iggczgjx9ocmtkjs2i1kjd0ehnrmolq0co",
+    "NEXT_PUBLIC_SITE_URL": "https://relife-razor.vercel.app"
+  }
+}

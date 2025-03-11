@@ -1,0 +1,184 @@
+// Modifications à apporter au fichier [id].tsx pour ajouter les nouveaux champs
+
+// 1. Ajouter ces états après les états existants (ligne ~28)
+// Nouveaux champs techniques
+const [weightGrams, setWeightGrams] = useState<number | undefined>(undefined)
+const [gapMm, setGapMm] = useState<number | undefined>(undefined)
+const [bladeExposureMm, setBladeExposureMm] = useState<number | undefined>(undefined)
+const [cuttingAngle, setCuttingAngle] = useState<number | undefined>(undefined)
+const [priceRange, setPriceRange] = useState('')
+const [baseMaterial, setBaseMaterial] = useState('')
+const [materialVariant, setMaterialVariant] = useState('')
+const [availableFinish, setAvailableFinish] = useState('')
+const [combType, setCombType] = useState('')
+const [releaseYear, setReleaseYear] = useState<number | undefined>(undefined)
+
+// 2. Ajouter ces lignes dans la fonction checkUserRights après avoir chargé les données du rasoir (ligne ~80)
+setWeightGrams(razorData.weight_grams || undefined)
+setGapMm(razorData.gap_mm || undefined)
+setBladeExposureMm(razorData.blade_exposure_mm || undefined)
+setCuttingAngle(razorData.cutting_angle || undefined)
+setPriceRange(razorData.price_range || '')
+setBaseMaterial(razorData.base_material || '')
+setMaterialVariant(razorData.material_variant || '')
+setAvailableFinish(razorData.available_finish || '')
+setCombType(razorData.comb_type || '')
+setReleaseYear(razorData.release_year || undefined)
+
+// 3. Ajouter ces champs dans la fonction handleSubmit lors de la mise à jour (ligne ~150)
+weight_grams: weightGrams || null,
+gap_mm: gapMm || null,
+blade_exposure_mm: bladeExposureMm || null,
+cutting_angle: cuttingAngle || null,
+price_range: priceRange || null,
+base_material: baseMaterial || null,
+material_variant: materialVariant || null,
+available_finish: availableFinish || null,
+comb_type: combType || null,
+release_year: releaseYear || null,
+
+// 4. Ajouter ces champs de formulaire avant la fermeture de la div "grid grid-cols-1 md:grid-cols-2 gap-6" (ligne ~300)
+{/* Nouveaux champs techniques */}
+<div className="mb-4">
+  <label htmlFor="weightGrams" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+    Poids (grammes)
+  </label>
+  <input
+    type="number"
+    id="weightGrams"
+    className="form-input w-full"
+    value={weightGrams || ''}
+    onChange={(e) => setWeightGrams(e.target.value ? parseFloat(e.target.value) : undefined)}
+    placeholder="Ex: 85"
+    step="0.1"
+  />
+</div>
+
+<div className="mb-4">
+  <label htmlFor="gapMm" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+    Gap (mm)
+  </label>
+  <input
+    type="number"
+    id="gapMm"
+    className="form-input w-full"
+    value={gapMm || ''}
+    onChange={(e) => setGapMm(e.target.value ? parseFloat(e.target.value) : undefined)}
+    placeholder="Ex: 0.95"
+    step="0.01"
+  />
+</div>
+
+<div className="mb-4">
+  <label htmlFor="bladeExposureMm" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+    Exposition de lame (mm)
+  </label>
+  <input
+    type="number"
+    id="bladeExposureMm"
+    className="form-input w-full"
+    value={bladeExposureMm || ''}
+    onChange={(e) => setBladeExposureMm(e.target.value ? parseFloat(e.target.value) : undefined)}
+    placeholder="Ex: 0.05"
+    step="0.01"
+  />
+</div>
+
+<div className="mb-4">
+  <label htmlFor="cuttingAngle" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+    Angle de coupe (degrés)
+  </label>
+  <input
+    type="number"
+    id="cuttingAngle"
+    className="form-input w-full"
+    value={cuttingAngle || ''}
+    onChange={(e) => setCuttingAngle(e.target.value ? parseFloat(e.target.value) : undefined)}
+    placeholder="Ex: 30"
+    step="0.1"
+  />
+</div>
+
+<div className="mb-4">
+  <label htmlFor="priceRange" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+    Fourchette de prix
+  </label>
+  <input
+    type="text"
+    id="priceRange"
+    className="form-input w-full"
+    value={priceRange}
+    onChange={(e) => setPriceRange(e.target.value)}
+    placeholder="Ex: 50-100€"
+  />
+</div>
+
+<div className="mb-4">
+  <label htmlFor="releaseYear" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+    Année de sortie
+  </label>
+  <input
+    type="number"
+    id="releaseYear"
+    className="form-input w-full"
+    value={releaseYear || ''}
+    onChange={(e) => setReleaseYear(e.target.value ? parseInt(e.target.value) : undefined)}
+    placeholder="Ex: 2020"
+  />
+</div>
+
+<div className="mb-4">
+  <label htmlFor="baseMaterial" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+    Matière principale
+  </label>
+  <input
+    type="text"
+    id="baseMaterial"
+    className="form-input w-full"
+    value={baseMaterial}
+    onChange={(e) => setBaseMaterial(e.target.value)}
+    placeholder="Ex: Acier inoxydable"
+  />
+</div>
+
+<div className="mb-4">
+  <label htmlFor="materialVariant" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+    Variantes de matière (séparées par des virgules)
+  </label>
+  <input
+    type="text"
+    id="materialVariant"
+    className="form-input w-full"
+    value={materialVariant}
+    onChange={(e) => setMaterialVariant(e.target.value)}
+    placeholder="Ex: Acier inoxydable, Laiton, Titane"
+  />
+</div>
+
+<div className="mb-4">
+  <label htmlFor="availableFinish" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+    Finitions disponibles (séparées par des virgules)
+  </label>
+  <input
+    type="text"
+    id="availableFinish"
+    className="form-input w-full"
+    value={availableFinish}
+    onChange={(e) => setAvailableFinish(e.target.value)}
+    placeholder="Ex: Chromé, Noir mat, Doré"
+  />
+</div>
+
+<div className="mb-4">
+  <label htmlFor="combType" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+    Types de peigne (séparés par des virgules)
+  </label>
+  <input
+    type="text"
+    id="combType"
+    className="form-input w-full"
+    value={combType}
+    onChange={(e) => setCombType(e.target.value)}
+    placeholder="Ex: Ouvert, Fermé, Hybride"
+  />
+</div>

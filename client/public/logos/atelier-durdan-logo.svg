@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <circle cx="500" cy="500" r="490" fill="none" stroke="black" stroke-width="20"/>
+  <path d="M500 200 L650 300 L650 550 L500 650 L350 550 L350 300 Z" fill="none" stroke="black" stroke-width="20"/>
+  <path d="M350 550 L380 580 L420 550 L460 580 L500 550" fill="none" stroke="black" stroke-width="20"/>
+  <path d="M500 200 L500 650" fill="none" stroke="black" stroke-width="20"/>
+  <path d="M350 300 L650 550" fill="none" stroke="black" stroke-width="20"/>
+  <text x="240" y="250" font-family="serif" font-size="120" font-style="italic">Atelier</text>
+  <text x="240" y="850" font-family="serif" font-size="120" font-style="italic">Durdan</text>
+</svg>

@@ -1,0 +1,17 @@
+{
+  "name": "relife-razor-server",
+  "version": "1.0.0",
+  "description": "Partie serveur pour la synchronisation avec Supabase via PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "sync-schema": "node scripts/sync-schema.js",
+    "sync-supabase": "node scripts/sync-schema-supabase.js",
+    "migrate": "node scripts/sync-schema-supabase.js",
+    "full-update": "node scripts/full_update.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.4",
+    "dotenv": "^16.0.3",
+    "pg": "^8.10.0"
+  }
+}

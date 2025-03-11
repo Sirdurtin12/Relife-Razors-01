@@ -1,0 +1,50 @@
+{
+  "name": "relife-razor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev-alt": "next dev -p 3001",
+    "dev-alt2": "next dev -p 3002",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@supabase/auth-helpers-nextjs": "^0.7.0",
+    "@supabase/auth-helpers-react": "^0.4.0",
+    "@supabase/supabase-js": "^2.21.0",
+    "@tinymce/tinymce-react": "^6.0.0",
+    "autoprefixer": "^10.4.14",
+    "axios": "^1.8.1",
+    "date-fns": "^4.1.0",
+    "i18next": "^24.2.2",
+    "nanoid": "^5.1.2",
+    "next": "^13.4.1",
+    "next-i18next": "^15.4.2",
+    "postcss": "^8.4.23",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.5.2",
+    "react-i18next": "^15.4.1",
+    "react-icons": "^4.12.0",
+    "react-quill": "^2.0.0",
+    "tailwindcss": "^3.3.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/date-fns": "^2.5.3",
+    "@types/node": "^18.16.3",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^13.3.4",
+    "eslint-plugin-vue": "^10.0.0",
+    "globals": "^16.0.0",
+    "typescript": "^5.0.4",
+    "typescript-eslint": "^8.26.0"
+  }
+}
