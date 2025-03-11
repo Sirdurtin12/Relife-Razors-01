@@ -1,0 +1,14 @@
+{
+  "name": "relife-razor-root",
+  "version": "1.0.0",
+  "description": "Racine du projet Relife Razor - Redirection vers le dossier client",
+  "private": true,
+  "scripts": {
+    "dev": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd client && npm run start"
+  },
+  "engines": {
+    "node": ">=16.x"
+  }
+}
